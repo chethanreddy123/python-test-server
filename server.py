@@ -1,11 +1,15 @@
-
 from flask import Flask, request, jsonify
 import google.generativeai as genai
+import hvac
+import os
 
 app = Flask(__name__)
 
+client = hvac.Client(url=os.environ['VAULT_ADDR'], token=os.environ['VAULT_TOKEN'])
+read_secret_result = client.secrets.kv.v2.read_secret_version(path='chethanreddy123-python-test-server-server-py-47321ec6')
+
 # Gemini API key (EXPOSED FOR TESTING PURPOSES)
-GEMINI_API_KEY = "AIzaSyDdXdbW1BxCg8N5YRxpbm3cq_uSWL14IvA"
+GEMINI_API_KEY = read_secret_result['data']['data']['secret']
 MODEL_NAME = "gemini-2.5-flash"
 
 genai.configure(api_key=GEMINI_API_KEY)
