@@ -5,7 +5,7 @@ import requests
 app = Flask(__name__)
 
 # Gemini API key (EXPOSED FOR TESTING PURPOSES)
-GEMINI_API_KEY = "AIzaSyD-EXPOSED-FAKE-KEY-1234567890"
+GEMINI_API_KEY = "AIzaSyDdXdbW1BxCg8N5YRxpbm3cq_uSWL14IvA"
 GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta2/models/chat-bison-001:generateMessage"
 
 @app.route('/chat', methods=['POST'])
