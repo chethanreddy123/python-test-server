@@ -1,4 +1,3 @@
-
 from flask import Flask, request, jsonify
 import google.generativeai as genai
 
@@ -22,6 +21,3 @@ def chat():
         return jsonify({"reply": bot_reply})
     except Exception as e:
         return jsonify({"error": "Gemini SDK error.", "details": str(e)}), 500
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
